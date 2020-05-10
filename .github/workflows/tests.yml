@@ -17,7 +17,7 @@ jobs:
   puppeteer:
     runs-on: ubuntu-latest
     container:
-      image: saucelabs/sauce-puppeteer-runner:latest
+      image: saucelabs/sauce-puppeteer:3.0.4-saucectl0.4.1
          
     steps:
       # appears that checkout@v2 uses javascript which is not compatible 
@@ -30,14 +30,14 @@ jobs:
         
       - name: Run Sauce Pipeline Test
         run: |
-          saucectl run -c ./.sauce/puppeteer.yml
+          saucectl run -c ./.sauce/puppeteer-3.0.4.yml
         env:
           BUILD_ID: ${{ github.run_id }}
           BUILD_ENV: GitHub Actions
   playwright:
     runs-on: ubuntu-latest
     container:
-      image: saucelabs/sauce-playwright-runner:latest
+      image: saucelabs/sauce-playwright:1.0.1-saucectl0.4.1
          
     steps:
       # appears that checkout@v2 uses javascript which is not compatible 

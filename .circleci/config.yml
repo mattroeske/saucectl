@@ -19,17 +19,32 @@ jobs:
             - .
   
   # Puppeteer Example
-  test-puppeteer:
+  test-puppeteer-3.0.4:
     working_directory: ~/app
     docker:
-      - image: saucelabs/sauce-puppeteer-runner:latest
+      - image: saucelabs/sauce-puppeteer:3.0.4-saucectl0.4.1
     steps:
       - attach_workspace:
           at: ~/app
       - run:
           name: Puppeteer Tests
           command: |
-            saucectl run -c ./.sauce/puppeteer.yml
+            saucectl run -c ./.sauce/puppeteer-3.0.4.yml
+          environment:
+            BUILD_ID: $CIRCLE_BUILD_NUM
+            BUILD_ENV: CircleCI
+  
+  test-puppeteer-2.0.2:
+    working_directory: ~/app
+    docker:
+      - image: saucelabs/sauce-puppeteer:2.0.2-saucectl0.4.1
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Puppeteer Tests
+          command: |
+            saucectl run -c ./.sauce/puppeteer-2.0.2.yml
           environment:
             BUILD_ID: $CIRCLE_BUILD_NUM
             BUILD_ENV: CircleCI
@@ -38,7 +53,7 @@ jobs:
   test-playwright:
     working_directory: ~/app
     docker:
-      - image: saucelabs/sauce-playwright-runner:latest
+      - image: saucelabs/sauce-playwright:1.0.1-saucectl0.4.1
     steps:
       - attach_workspace:
           at: ~/app

@@ -13,12 +13,14 @@ metadata:
 # Every file defined in this list will be bundled into a zip and
 # uploaded to Sauce Labs.
 files:
-  - ./tests/playwright/demo.test.js
+  - ./tests/puppeteer/demo.test.js
+  # - ./tests/puppeteer/sauce-swag-checkout.test.js
+  # - ./tests/puppeteer/sauce-swag-login.test.js
 # Define a test runner image (e.g. an image to run WebdriverIO tests)
 # Like in Docker, these images can be developed as Open Source projects
 # and maintained by our teams, while at the same time, customers can
 # build their own images as well
 image:
   # while a set of properties are defined by our Yaml format
-  base: saucelabs/sauce-playwright
-  version: 1.0.1
+  base: saucelabs/sauce-puppeteer
+  version: 3.0.4
